@@ -1,6 +1,6 @@
 {
     "name": "oz-image-plugin-pdf",
-    "version": "2.2.5",
+    "version": "2.2.6",
     "description": "Renders Pdf links refering outside Obsidian Vault",
     "main": "main.js",
     "scripts": {
