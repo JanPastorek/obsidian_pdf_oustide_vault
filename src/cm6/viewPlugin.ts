@@ -15,14 +15,12 @@ export const getViewPlugin = (params: { plugin: OzanImagePlugin }): Extension =>
 
             constructor(view: EditorView) {
                 this.decoManager = new StatefulDecorationSet(view);
-                if (livePreviewActive(plugin.app)) {
-                    const state = view.state;
-                    this.decoManager.updateAsyncDecorations({ view, state, newDoc: state.doc, plugin });
-                }
+                const state = view.state;
+                this.decoManager.updateAsyncDecorations({ view, state, newDoc: state.doc, plugin });
             }
 
             update(update: ViewUpdate) {
-                if ((update.docChanged || update.viewportChanged) && livePreviewActive(plugin.app)) {
+                if (update.docChanged || update.viewportChanged) {
                     const state = update.view.state;
                     this.decoManager.updateAsyncDecorations({ view: update.view, plugin, newDoc: state.doc });
                 }
