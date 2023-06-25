@@ -50,31 +50,31 @@ export const detectLink = (params: { lineText: string; sourceFile: TFile; plugin
         }
     }
 
-    // --> B. PDF Files
-    // 1. Pdf Wiki [[ ]] format
-    const pdfWikiRegex = /!\[\[.*(pdf)(.*)?\]\]/;
-    const pdfWikiMatch = lineText.match(pdfWikiRegex);
+    // // --> B. PDF Files
+    // // 1. Pdf Wiki [[ ]] format
+    // const pdfWikiRegex = /!\[\[.*(pdf)(.*)?\]\]/;
+    // const pdfWikiMatch = lineText.match(pdfWikiRegex);
 
-    if (pdfWikiMatch) {
-        const pdfWikiFileNameRegex = /\[\[.*.pdf/;
-        const pdfWikiFileNameMatch = pdfWikiMatch[0].match(pdfWikiFileNameRegex);
-        if (pdfWikiFileNameMatch) {
-            const pdfWikiFileNameMatchClear = pdfWikiFileNameMatch[0].replace('[[', '');
-            const file = plugin.app.metadataCache.getFirstLinkpathDest(decodeURIComponent(pdfWikiFileNameMatchClear), sourceFile.path);
-            if (file) {
-                const pdfPageNumberRegex = new RegExp('#page=[0-9]+');
-                const pdfPageNumberMatch = pdfWikiMatch[0].match(pdfPageNumberRegex);
-                return {
-                    type: 'pdf-file',
-                    match: pdfWikiMatch[0],
-                    linkText: '',
-                    altText: '',
-                    blockRef: pdfPageNumberMatch ? pdfPageNumberMatch[0] : '',
-                    file: file,
-                };
-            }
-        }
-    }
+    // if (pdfWikiMatch) {
+    //     const pdfWikiFileNameRegex = /\[\[.*.pdf/;
+    //     const pdfWikiFileNameMatch = pdfWikiMatch[0].match(pdfWikiFileNameRegex);
+    //     if (pdfWikiFileNameMatch) {
+    //         const pdfWikiFileNameMatchClear = pdfWikiFileNameMatch[0].replace('[[', '');
+    //         const file = plugin.app.metadataCache.getFirstLinkpathDest(decodeURIComponent(pdfWikiFileNameMatchClear), sourceFile.path);
+    //         if (file) {
+    //             const pdfPageNumberRegex = new RegExp('#page=[0-9]+');
+    //             const pdfPageNumberMatch = pdfWikiMatch[0].match(pdfPageNumberRegex);
+    //             return {
+    //                 type: 'pdf-file',
+    //                 match: pdfWikiMatch[0],
+    //                 linkText: '',
+    //                 altText: '',
+    //                 blockRef: pdfPageNumberMatch ? pdfPageNumberMatch[0] : '',
+    //                 file: file,
+    //             };
+    //         }
+    //     }
+    // }
 
     // 2. Pdf Md ![ ]( ) format
     const pdfMdRegex = /!\[(^$|.*)\]\(.*(pdf)(.*)?\)/;
