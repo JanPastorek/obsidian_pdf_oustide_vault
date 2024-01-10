@@ -80,6 +80,11 @@ export class OzanImagePluginSettingsTab extends PluginSettingTab {
             .addToggle((toggle) => {
                 toggle.setValue(this.plugin.settings.cm6RenderAll).onChange((value) => {
                     this.plugin.settings.cm6RenderAll = value;
+                    if (value) {
+                        this.plugin.loadCM6Extension();
+                    } else {
+                        this.plugin.unloadCM6Extension();
+                    }
                     this.plugin.saveSettings();
                 });
             });

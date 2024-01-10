@@ -5,3 +5,4 @@ data.json
 main.js
 *.js.map
 dist/*
+.history/*

@@ -1,7 +1,7 @@
 {
     "id": "oz-image-plugin-pdf",
     "name": "Pdf outside Obsidian Vault",
-    "version": "2.2.7",
+    "version": "2.2.8",
     "minAppVersion": "0.15.0",
     "description": "Renders Pdf links refering outside Obsidian Vault",
     "author": "Ozan Tellioglu",
